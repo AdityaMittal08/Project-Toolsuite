@@ -126,12 +126,17 @@
         <hr>
 
         <section>
-            <h2>2. Split PDF / Extract Pages</h2>
-            <p>Upload a PDF and specify which pages to keep.</p>
-            <input type="file" id="splitInput" accept=".pdf">
-            <input type="text" id="splitRange" placeholder="e.g. 1-3, 5">
-            <button id="splitBtn">Extract & Download</button>
-        </section>
+    <h2>2. PDF Splitter (Visual)</h2>
+    <p>Upload a PDF to see the pages, then click the ones you want to extract.</p>
+    <input type="file" id="splitInput" accept=".pdf">
+    
+    <div id="pdfPreviewContainer" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; max-height: 400px; overflow-y: scroll; display: flex; flex-wrap: wrap; gap: 10px;">
+        <em>Upload a file to see preview...</em>
+    </div>
+
+    <p>Selected Pages: <input type="text" id="splitRange" placeholder="e.g. 1, 3, 5"></p>
+    <button id="splitBtn">Extract & Download Selected</button>
+</section>
 
         <hr>
 
