@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Toolsuite - Your Work, My Tools</title>
+    <title>Contributors - Project Toolsuite</title>
     <style>
         /* Minimalist "Tool" Aesthetic */
         body {
@@ -79,6 +79,32 @@
             border-bottom: 1px solid #000;
         }
 
+        /* Contributors List */
+        .contributors-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .contributors-list li {
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px dotted #000;
+        }
+
+        .contributors-list li:last-child {
+            border-bottom: none;
+        }
+
+        .contributor-name {
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .contributor-link {
+            font-size: 0.9rem;
+        }
+
         /* Footer Section */
         footer {
             margin-top: 80px;
@@ -107,38 +133,28 @@
 
     <main>
         <section>
-            <h2>The Core Principle</h2>
+            <h2>Contributors</h2>
             <p>
-                You open your browser, you complete your work, you download your result. No unnecessary steps.
-            </p>
-            <p>
-                We eliminate the frustration of last-minute barriers.
+                Thank you to everyone who has contributed to making Project Toolsuite better.
             </p>
 
-            <h3>Our Promise</h3>
-            <ul>
-                <li>No Logins</li>
-                <li>No Paywalls</li>
-                <li>No Ads</li>
-                <li>Your work, My tools.</li>
+            <ul class="contributors-list">
+                <li>
+                    <span class="contributor-name">Shubham Chaudhari</span>
+                    <a href="https://github.com/winter262005" class="contributor-link" target="_blank">@winter262005</a>
+                </li>
+                <li>
+                    <span class="contributor-name">Suyash Soni</span>
+                    <a href="https://github.com/SuyashSoni10" class="contributor-link" target="_blank">@SuyashSoni10</a>
+                </li>
+                <!-- Add more contributors here following the same format -->
             </ul>
         </section>
 
-        <section id="tools">
-            <h2>Available Tools</h2>
-            
-            <nav>
-                <h3>Document & File Tools</h3>
-                <ul>
-                    <li><a href="tools/pdf merger/pdf-merger.html">PDF ToolSuite</a></li>
-                </ul>
-            </nav>
-        </section>
-        
         <section>
-            <h2>How It Works</h2>
+            <h2>Want to Contribute?</h2>
             <p>
-                All processing is done directly in your browser whenever possible. This means faster results and greater privacy. We do not store your files.
+                Project Toolsuite is open to contributions! Whether it's adding new tools, improving existing ones, or fixing bugs, your help is welcome.
             </p>
         </section>
 
@@ -147,11 +163,12 @@
     <footer>
         <p>&copy; 2025 Project Toolsuite. Simple. Fast. Free.</p>
         <p>
+            <a href="index.html">Home</a> | 
             <a href="/about">About This Project</a> | 
-            <a href="/privacy">Privacy Policy</a> |
-            <a href="/contributers">Contributers</a>
+            <a href="/privacy">Privacy Policy</a>
         </p>
     </footer>
 
 </body>
 </html>
+
