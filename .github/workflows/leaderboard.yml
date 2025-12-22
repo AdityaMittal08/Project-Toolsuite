@@ -2,8 +2,11 @@ name: Update Leaderboard
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # runs daily
-  workflow_dispatch:     # allows manual run
+    - cron: "0 0 * * *"   # daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   leaderboard:
@@ -17,6 +20,8 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            const fs = require("fs");
+
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
@@ -25,29 +30,31 @@ jobs:
               { owner, repo }
             );
 
-            let rows = contributors.map((c, i) => {
-              const points = c.contributions; // 1 commit = 1 point (for now)
-              return `| ${i + 1} | @${c.login} | ${points} | ${c.contributions} |`;
+            if (contributors.length === 0) {
+              console.log("No contributors found.");
+              process.exit(0);
+            }
+
+            let tableRows = contributors.map((c, i) => {
+              return `| ${i + 1} | @${c.login} | ${c.contributions} | ${c.contributions} |`;
             });
 
-            const content = `
-# 🏆 Project Toolsuite Leaderboard
+            const content =
+              "# 🏆 Project Toolsuite Leaderboard\n\n" +
+              "> Automatically updated based on **public commits** to this repository.\n\n" +
+              "| Rank | Contributor | Points | Commits |\n" +
+              "|-----:|------------|-------:|--------:|\n" +
+              tableRows.join("\n") +
+              "\n\n_Last updated: " +
+              new Date().toUTCString() +
+              "_\n";
 
-> Automatically updated based on **public commits** to this repository.
-
-| Rank | Contributor | Points | Commits |
-|-----:|------------|-------:|--------:|
-${rows.join("\n")}
-
-_Last updated: ${new Date().toUTCString()}_
-`;
-
-            require("fs").writeFileSync("LEADERBOARD.md", content.trim());
+            fs.writeFileSync("LEADERBOARD.md", content);
 
       - name: Commit leaderboard
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add LEADERBOARD.md
-          git commit -m "chore: update leaderboard" || echo "No changes"
+          git commit -m "chore: update leaderboard" || echo "No changes to commit"
           git push
