@@ -30,18 +30,25 @@ Found a bug or have a suggestion? Always check the "Issues" tab first.
 
 ---
 
-## 3. 🛠️ Making Changes (GitHub Web)
+## 🛠️ 3. Your First Contribution: Add Your Name!
 
-You can edit code directly in your browser without any setup:
-1. Navigate to **your forked version** of the repository (e.g., `github.com/YOUR-USERNAME/project-toolsuite`).
-2. Click on the file you want to edit (e.g., `mirror-logic.js` or `index.html`).
+The easiest way to start is by adding your name to our `contributers.html` file.
+
+### Step-by-Step Example:
+1. Navigate to **your forked version** of the repository.
+2. Click on the file named `contributers.html`.
 3. Click the **Pencil Icon** (Edit this file) in the top right.
-4. Make your changes in the editor.
-5. Scroll down to the **Commit changes** box:
-   * Write a short, descriptive message (e.g., "Fixed video autoplay on mobile").
-   * Ensure **"Commit directly to the main branch"** is selected.
-   * Click **Commit changes**.
+4. Scroll down to the `<ul class="contributors-list">` section.
+5. Copy an existing `<li>` block and paste it at the bottom of the list with your information:
 
+```html
+<li>
+    <span class="contributor-name">YOUR NAME</span>
+    <a href="[https://github.com/YOUR-USERNAME](https://github.com/YOUR-USERNAME)" class="contributor-link" target="_blank">@YOUR-USERNAME</a>
+</li>
+```
+
+6. Scroll down to Commit changes, type "Added myself to contributors list" as the message, and click Commit changes.
 
 
 ---
