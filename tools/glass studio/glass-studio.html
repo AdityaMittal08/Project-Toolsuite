@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolsuite: Glassmorphism Lab</title>
+    <style>
+        /* Global Minimalist Styling (Toolsuite Standard) */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar - UI stays Monochrome */
+        .sidebar { 
+            width: 380px; 
+            background: #fff; 
+            border-right: 5px solid #000; 
+            display: flex; 
+            flex-direction: column; 
+            z-index: 10; 
+        }
+
+        .sidebar-header { 
+            padding: 20px; 
+            border-bottom: 5px solid #000; 
+        }
+
+        h1 { 
+            font-size: 1.5rem; 
+            text-transform: uppercase; 
+            margin: 0; 
+        }
+
+        .scroll-area { 
+            padding: 20px; 
+            overflow-y: auto; 
+            flex-grow: 1; 
+        }
+
+        /* Controls */
+        .control-group { margin-bottom: 20px; }
+        
+        .control-header { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 5px; 
+        }
+
+        label { 
+            font-size: 0.8rem; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+        }
+
+        .val-badge { 
+            font-weight: bold; 
+            border: 1px solid #000;
+            padding: 0 4px;
+        }
+
+        input[type="range"] { 
+            width: 100%; 
+            appearance: none; 
+            background: #000; 
+            height: 2px; 
+            outline: none; 
+            margin: 15px 0; 
+        }
+
+        input[type="range"]::-webkit-slider-thumb { 
+            appearance: none; 
+            width: 18px; 
+            height: 18px; 
+            background: #fff; 
+            border: 2px solid #000; 
+            cursor: pointer; 
+        }
+
+        select, input[type="color"] { 
+            width: 100%; 
+            padding: 10px; 
+            background: #fff; 
+            border: 2px solid #000; 
+            color: #000; 
+            font-family: 'Courier New', monospace;
+            border-radius: 0;
+        }
+
+        /* Code Block - System Readout Style */
+        .code-block { 
+            background: #fff; 
+            padding: 15px; 
+            margin-top: 20px; 
+            font-family: 'Courier New', monospace; 
+            font-size: 0.75rem; 
+            color: #000; 
+            border: 1px dashed #000; 
+            position: relative; 
+            white-space: pre-wrap; 
+        }
+
+        .copy-btn { 
+            position: absolute; 
+            top: 5px; 
+            right: 5px; 
+            background: #000; 
+            border: none; 
+            color: #fff; 
+            font-size: 0.6rem; 
+            padding: 4px 8px; 
+            cursor: pointer; 
+            text-transform: uppercase;
+        }
+
+        .copy-btn:hover { background: #444; }
+
+        /* Canvas - The Work Area (Preserves Visuals) */
+        .canvas { 
+            flex-grow: 1; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            transition: background 0.4s; 
+        }
+
+        .blob { position: absolute; filter: blur(70px); border-radius: 50%; opacity: 0.5; pointer-events: none; }
+
+        .glass-card {
+            width: 420px; 
+            min-height: 260px; 
+            padding: 40px; 
+            position: relative;
+            background: rgba(var(--tint), var(--opacity));
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            border: 1px solid rgba(255, 255, 255, var(--outline));
+            box-shadow: 0 10px var(--elevation) 0 rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            color: #fff; /* Keep text readable against background */
+        }
+
+        footer-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        footer-nav a {
+            color: #000;
+            text-decoration: none;
+            border-bottom: 1px dotted #000;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h1>Glass Studio</h1>
+    </div>
+    <div class="scroll-area">
+        <div class="control-group">
+            <div class="control-header"><label>Blur</label><span class="val-badge" id="v-blur">10px</span></div>
+            <input type="range" id="blurInput" min="0" max="40" value="10">
+        </div>
+        <div class="control-group">
+            <div class="control-header"><label>Opacity</label><span class="val-badge" id="v-opacity">0.45</span></div>
+            <input type="range" id="opacityInput" min="0" max="1" step="0.01" value="0.45">
+        </div>
+        <div class="control-group">
+            <label>Glass Tint</label>
+            <input type="color" id="colorInput" value="#ffffff">
+        </div>
+        <div class="control-group">
+            <div class="control-header"><label>Border</label><span class="val-badge" id="v-outline">0.1</span></div>
+            <input type="range" id="outlineInput" min="0" max="1" step="0.01" value="0.1">
+        </div>
+        <div class="control-group">
+            <div class="control-header"><label>Elevation</label><span class="val-badge" id="v-shadow">32px</span></div>
+            <input type="range" id="shadowInput" min="0" max="100" value="32">
+        </div>
+        <div class="control-group">
+            <div class="control-header"><label>Noise</label><span class="val-badge" id="v-noise">0.05</span></div>
+            <input type="range" id="noiseInput" min="0" max="0.4" step="0.01" value="0.05">
+        </div>
+        <div class="control-group">
+            <label>Environment</label>
+            <select id="envInput">
+                <option value="mesh">Aurora Mesh</option>
+                <option value="deep">Deep Ocean</option>
+                <option value="dark">Flat Dark</option>
+            </select>
+        </div>
+        <div class="code-block">
+            <button class="copy-btn" id="copyBtn">COPY CSS</button>
+            <div id="codeOutput">/* CSS will appear here */</div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="index.html" style="color:#000; text-decoration:none; border-bottom:1px dotted #000; font-size:0.8rem;">← BACK TO HOME</a>
+        </div>
+    </div>
+</div>
+
+<div class="canvas" id="canvas">
+    <div id="blobs">
+        <div class="blob" style="width: 450px; height: 450px; background: #ff00ea; top: -10%; right: -5%;"></div>
+        <div class="blob" style="width: 350px; height: 350px; background: #00d4ff; bottom: 5%; left: 5%;"></div>
+    </div>
+    <div class="glass-card" id="card">
+        <h2 style="margin:0; font-family: sans-serif;">Glass UI</h2>
+        <p style="opacity:0.8; font-family: sans-serif;">Adjust sliders to see magic happen.</p>
+    </div>
+</div>
+
+<script src="glass-logic.js"></script>
+</body>
+</html>
