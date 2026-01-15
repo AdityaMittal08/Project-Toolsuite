@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Toolsuite</title>
     <style>
-        /* Minimalist "Tool" Aesthetic */
         body {
             font-family: 'Courier New', Courier, monospace;
             background-color: #ffffff;
             color: #000000;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 40px auto;
+            line-height: 1.7;
+            max-width: 860px;
+            margin: 32px auto;
             padding: 20px;
             transition: background-color 0.3s, color 0.3s;
         }
@@ -23,8 +22,9 @@
         }
 
         header {
-            border-bottom: 5px solid #000;
-            margin-bottom: 50px;
+            border-bottom: 4px solid #000;
+            padding-bottom: 16px;
+            margin-bottom: 48px;
             position: relative;
         }
 
@@ -33,19 +33,18 @@
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             text-transform: uppercase;
             margin: 0;
-            padding-bottom: 10px;
         }
 
         h2 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-transform: uppercase;
             border-bottom: 2px solid #000;
             display: inline-block;
-            margin-top: 40px;
-            margin-bottom: 15px;
+            margin-top: 48px;
+            margin-bottom: 18px;
         }
 
         .dark-mode h2 {
@@ -53,95 +52,76 @@
         }
 
         h3 {
-            font-size: 1rem;
-            text-decoration: underline;
-            margin-top: 25px;
+            font-size: 1.05rem;
+            margin-top: 28px;
         }
 
         p {
-            margin-bottom: 15px;
+            max-width: 720px;
+            margin-bottom: 18px;
         }
 
         ul {
             list-style-type: "- ";
             padding-left: 20px;
-            margin-bottom: 20px;
+            margin-top: 12px;
         }
 
         li {
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
-        /* Navigation & Tool Links */
         nav ul {
-            list-style-type: none;
+            list-style: none;
             padding-left: 0;
+            margin-top: 12px;
         }
 
         nav li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         a {
-            color: #000;
+            color: inherit;
             text-decoration: none;
-            border-bottom: 1px dotted #000;
-            transition: all 0.3s;
-        }
-
-        .dark-mode a {
-            color: #f0f0f0;
-            border-bottom-color: #f0f0f0;
+            border-bottom: 1px dotted currentColor;
+            transition: background-color 0.25s, color 0.25s;
+            padding: 2px 4px;
         }
 
         a:hover {
             background-color: #000;
             color: #fff;
-            border-bottom: 1px solid #000;
         }
 
         .dark-mode a:hover {
             background-color: #f0f0f0;
             color: #121212;
-            border-bottom-color: #f0f0f0;
         }
 
-        /* Footer Section */
         footer {
-            margin-top: 80px;
-            font-size: 0.9rem;
-            border-top: 1px solid #000;
+            margin-top: 72px;
             padding-top: 20px;
-            transition: border-color 0.3s;
+            border-top: 1px solid #000;
+            font-size: 0.9rem;
         }
 
         .dark-mode footer {
             border-top-color: #f0f0f0;
         }
 
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        /* Dark Mode Toggle Button */
         .dark-mode-toggle {
             position: absolute;
-            top: 10px;
+            top: 0;
             right: 0;
             background: none;
-            border: 2px solid #000;
-            color: #000;
-            padding: 5px 15px;
-            font-family: 'Courier New', Courier, monospace;
+            border: 2px solid currentColor;
+            padding: 6px 16px;
+            font-family: inherit;
             font-size: 0.9rem;
             cursor: pointer;
             text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .dark-mode .dark-mode-toggle {
-            border-color: #f0f0f0;
-            color: #f0f0f0;
+            transition: background-color 0.25s, color 0.25s;
         }
 
         .dark-mode-toggle:hover {
@@ -154,146 +134,109 @@
             color: #121212;
         }
 
-        /* Responsive adjustment for small screens */
         @media (max-width: 600px) {
             body {
-                margin: 10px auto;
+                margin: 16px auto;
             }
-            
+
+            header {
+                padding-bottom: 12px;
+            }
+
+            h1 {
+                font-size: 1.9rem;
+            }
+
             .dark-mode-toggle {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin-top: 10px;
+                position: static;
                 width: 100%;
+                margin-top: 14px;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Project Toolsuite</h1>
-        <button class="dark-mode-toggle" id="darkModeToggle">
-            Dark Mode
-        </button>
-    </header>
+<header>
+    <h1>Project Toolsuite</h1>
+    <button class="dark-mode-toggle" id="darkModeToggle">Dark</button>
+</header>
 
-    <main>
-        <section>
-            <h2>The Core Principle</h2>
-            <p>
-                You open your browser, you complete your work, you download your result. No unnecessary steps.
-            </p>
-            <p>
-                We eliminate the frustration of last-minute barriers.
-            </p>
-
-            <h3>Our Promise</h3>
-            <ul>
-                <li>No Logins</li>
-                <li>No Paywalls</li>
-                <li>No Ads</li>
-                <li>Your work, Our tools.</li>
-            </ul>
-        </section>
-
-        <section id="tools">
-            <h2>Available Tools</h2>
-            
-            <nav>
-                <ul>
-                    <li><a href="tools/pdf merger/pdf-merger.html">PDF ToolSuite</a></li>
-                    <li><a href="tools/file converters/converter.html">File Converters</a></li>
-                    <li><a href="tools/color palette extractor/palette.html">Image to Color Palette</a></li>
-                    <li><a href="tools/qr generator/qr-generator.html">QR Generator (Text / URL)</a></li>
-                    <li><a href="tools/ocr/ocr.html">OCR Tool</a></li>
-                    <li><a href="tools/url shortener/shortener.html">URL Shortener</a></li>
-                    <li><a href="tools/screen mirror/mirror.html">Screen Mirror</a></li>
-                    <li><a href="tools/password lab/password-tester.html">Password Strength Check</a></li>
-                    <li><a href="tools/glass studio/glass-studio.html">Glass Studio</a></li>
-                    <li><a href="tools/base64/base64.html">Base64 Encoder/Decoder</a></li>
-                    <li><a href="tools/image compressor/image-compressor.html">Image Compressor</a></li>
-                    <li><a href="tools/json-formatter/json-formatter.html">Secure JSON Formatter</a></li>
-                </ul>
-            </nav>
-        </section>
-        
-        <section>
-            <h2>How It Works</h2>
-            <p>
-                All processing is done directly in your browser whenever possible. This means faster results and greater privacy. We do not store your files.
-            </p>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Project Toolsuite. Simple. Fast. Free.</p>
+<main>
+    <section>
+        <h2>The Core Principle</h2>
         <p>
-            <a href="https://github.com/Winter262005/Project-Toolsuite">About This Project</a> | 
-            <a href="/privacy.html">Privacy Policy</a> |
-            <a href="/contributers.html">Contributers</a>
+            Open your browser, complete your task, download the result. No friction. No distractions.
         </p>
-    </footer>
+        <p>
+            Built for moments when speed, simplicity, and reliability matter the most.
+        </p>
 
-    <script>
-        // Dark mode functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const toolList = document.querySelector('#tools nav ul');
-            
-            if (toolList) {
-                const tools = Array.from(toolList.children);
-                
-                tools.sort((a, b) => {
-                    const textA = a.textContent.trim().toLowerCase();
-                    const textB = b.textContent.trim().toLowerCase();
-                    return textA.localeCompare(textB);
-                });
+        <h3>Our Promise</h3>
+        <ul>
+            <li>No logins</li>
+            <li>No paywalls</li>
+            <li>No ads</li>
+            <li>Your work, our tools</li>
+        </ul>
+    </section>
 
-                tools.forEach(tool => toolList.appendChild(tool));
-            }
+    <section id="tools">
+        <h2>Available Tools</h2>
+        <nav>
+            <ul>
+                <li><a href="tools/pdf merger/pdf-merger.html">PDF ToolSuite</a></li>
+                <li><a href="tools/file converters/converter.html">File Converters</a></li>
+                <li><a href="tools/color palette extractor/palette.html">Image to Color Palette</a></li>
+                <li><a href="tools/qr generator/qr-generator.html">QR Generator</a></li>
+                <li><a href="tools/ocr/ocr.html">OCR Tool</a></li>
+                <li><a href="tools/url shortener/shortener.html">URL Shortener</a></li>
+                <li><a href="tools/screen mirror/mirror.html">Screen Mirror</a></li>
+                <li><a href="tools/password lab/password-tester.html">Password Strength Check</a></li>
+                <li><a href="tools/glass studio/glass-studio.html">Glass Studio</a></li>
+                <li><a href="tools/base64/base64.html">Base64 Encoder / Decoder</a></li>
+                <li><a href="tools/image compressor/image-compressor.html">Image Compressor</a></li>
+            </ul>
+        </nav>
+    </section>
 
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            const body = document.body;
-            
-            // Check for saved theme preference or prefer-color-scheme
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            const savedTheme = localStorage.getItem('theme');
-            
-            // Set initial theme
-            if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
-                body.classList.add('dark-mode');
-                darkModeToggle.textContent = 'Light';
-            }
-            
-            // Toggle dark mode
-            darkModeToggle.addEventListener('click', function() {
-                body.classList.toggle('dark-mode');
-                
-                if (body.classList.contains('dark-mode')) {
-                    darkModeToggle.textContent = 'Light';
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    darkModeToggle.textContent = 'Dark';
-                    localStorage.setItem('theme', 'light');
-                }
-            });
-            
-            // Listen for system theme changes
-            prefersDarkScheme.addEventListener('change', function(e) {
-                if (!localStorage.getItem('theme')) {
-                    if (e.matches) {
-                        body.classList.add('dark-mode');
-                        darkModeToggle.textContent = 'Light Mode';
-                    } else {
-                        body.classList.remove('dark-mode');
-                        darkModeToggle.textContent = 'Dark Mode';
-                    }
-                }
-            });
+    <section>
+        <h2>How It Works</h2>
+        <p>
+            Processing happens directly in your browser whenever possible. Your files stay on your device, ensuring privacy and faster results.
+        </p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Project Toolsuite — Simple. Fast. Free.</p>
+    <p>
+        <a href="https://github.com/Winter262005/Project-Toolsuite">About</a> |
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="contributers.html">Contributors</a>
+    </p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        if (saved === 'dark' || (!saved && prefersDark.matches)) {
+            body.classList.add('dark-mode');
+            toggle.textContent = 'Light';
+        }
+
+        toggle.addEventListener('click', function () {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            toggle.textContent = isDark ? 'Light' : 'Dark';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
-    </script>
+    });
+</script>
 
 </body>
 </html>

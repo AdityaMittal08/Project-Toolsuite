@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contributors - Project Toolsuite</title>
+    <title>Contributors | Project Toolsuite</title>
+
     <style>
-        /* Minimalist "Tool" Aesthetic */
         body {
             font-family: 'Courier New', Courier, monospace;
             background-color: #ffffff;
@@ -14,11 +14,22 @@
             max-width: 800px;
             margin: 40px auto;
             padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #1b1a1a;
+            color: #f0f0f0;
         }
 
         header {
             border-bottom: 5px solid #000;
             margin-bottom: 50px;
+            position: relative;
+        }
+
+        .dark-mode header {
+            border-bottom-color: #f0f0f0;
         }
 
         h1 {
@@ -34,61 +45,32 @@
             border-bottom: 2px solid #000;
             display: inline-block;
             margin-top: 40px;
-            margin-bottom: 15px;
-        }
-
-        h3 {
-            font-size: 1rem;
-            text-decoration: underline;
-            margin-top: 25px;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        ul {
-            list-style-type: "- ";
-            padding-left: 20px;
             margin-bottom: 20px;
         }
 
-        li {
-            margin-bottom: 5px;
+        .dark-mode h2 {
+            border-bottom-color: #f0f0f0;
         }
 
-        /* Navigation & Tool Links */
-        nav ul {
-            list-style-type: none;
-            padding-left: 0;
+        p {
+            margin-bottom: 20px;
         }
 
-        nav li {
-            margin-bottom: 10px;
-        }
-
-        a {
-            color: #000;
-            text-decoration: none;
-            border-bottom: 1px dotted #000;
-        }
-
-        a:hover {
-            background-color: #000;
-            color: #fff;
-            border-bottom: 1px solid #000;
-        }
-
-        /* Contributors List */
         .contributors-list {
-            list-style-type: none;
-            padding-left: 0;
+            list-style: none;
+            padding: 0;
         }
 
         .contributors-list li {
-            margin-bottom: 15px;
-            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
             border-bottom: 1px dotted #000;
+        }
+
+        .dark-mode .contributors-list li {
+            border-bottom-color: #f0f0f0;
         }
 
         .contributors-list li:last-child {
@@ -97,68 +79,116 @@
 
         .contributor-name {
             font-weight: bold;
-            display: inline-block;
-            margin-right: 10px;
         }
 
-        .contributor-link {
-            font-size: 0.9rem;
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dotted currentColor;
+            transition: all 0.3s;
         }
 
-        /* Footer Section */
+        a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .dark-mode a:hover {
+            background-color: #f0f0f0;
+            color: #121212;
+        }
+
         footer {
             margin-top: 80px;
             font-size: 0.9rem;
             border-top: 1px solid #000;
             padding-top: 20px;
+            transition: border-color 0.3s;
         }
 
-        footer p {
-            margin-bottom: 10px;
+        .dark-mode footer {
+            border-top-color: #f0f0f0;
         }
 
-        /* Responsive adjustment for small screens */
+        .dark-mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            background: none;
+            border: 2px solid #000;
+            color: #000;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+        }
+
+        .dark-mode .dark-mode-toggle {
+            border-color: #f0f0f0;
+            color: #f0f0f0;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .dark-mode .dark-mode-toggle:hover {
+            background-color: #f0f0f0;
+            color: #121212;
+        }
+
         @media (max-width: 600px) {
             body {
                 margin: 10px auto;
             }
+
+            .contributors-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .dark-mode-toggle {
+                position: static;
+                width: 100%;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
-<body>
 
+<body>
     <header>
         <h1>Project Toolsuite</h1>
+        <button class="dark-mode-toggle" id="themeToggle">Dark</button>
     </header>
 
     <main>
         <section>
             <h2>Contributors</h2>
-            <p>
-                Thank you to everyone who has contributed to making Project Toolsuite better.
-            </p>
+            <p>These people help shape and improve Project Toolsuite.</p>
 
             <ul class="contributors-list">
                 <li>
                     <span class="contributor-name">Shubham Chaudhari</span>
-                    <a href="https://github.com/winter262005" class="contributor-link" target="_blank">@winter262005</a>
+                    <a href="https://github.com/winter262005" target="_blank">@winter262005</a>
                 </li>
                 <li>
                     <span class="contributor-name">Suyash Soni</span>
-                    <a href="https://github.com/SuyashSoni10" class="contributor-link" target="_blank">@SuyashSoni10</a>
+                    <a href="https://github.com/SuyashSoni10" target="_blank">@SuyashSoni10</a>
                 </li>
                 <li>
                     <span class="contributor-name">Shlok Dwivedi</span>
-                    <a href="https://github.com/Shlok-Dwivedi" class="contributor-link" target="_blank">@Shlok-Dwivedi</a>
+                    <a href="https://github.com/Shlok-Dwivedi" target="_blank">@Shlok-Dwivedi</a>
                 </li>
                 <li>
                     <span class="contributor-name">Anshul Shukla</span>
-                    <a href="https://github.com/anshul-lh44" class="contributor-link" target="_blank">@anshul-lh44</a>
+                    <a href="https://github.com/anshul-lh44" target="_blank">@anshul-lh44</a>
                 </li>
-                <!-- Add more contributors here following the same format -->
-                 <li>
+                <li>
                     <span class="contributor-name">Yash Bhondave</span>
-                    <a href="https://github.com/yhcb21" class="contributor-link" target="_blank">@yhcb21</a>
+                    <a href="https://github.com/yhcb21" target="_blank">@yhcb21</a>
                 </li>
             </ul>
         </section>
@@ -166,21 +196,39 @@
         <section>
             <h2>Want to Contribute?</h2>
             <p>
-                Project Toolsuite is open to contributions! Whether it's adding new tools, improving existing ones, or fixing bugs, your help is welcome.
+                Toolsuite is open source. Improve a tool, add a new one, or polish the UI.
+            </p>
+            <p>
+                Start with the <a href="CONTRIBUTING.md">contribution guide</a>.
             </p>
         </section>
-
     </main>
 
     <footer>
-        <p>&copy; 2025 Project Toolsuite. Simple. Fast. Free.</p>
+        <p>&copy; 2025 Project Toolsuite</p>
         <p>
-            <a href="index.html">Home</a> | 
-            <a href="https://github.com/Winter262005/Project-Toolsuite">About This Project</a> | 
-            <a href="/privacy">Privacy Policy</a>
+            <a href="index.html">Home</a> |
+            <a href="privacy.html">Privacy</a> |
+            <a href="https://github.com/Winter262005/Project-Toolsuite">GitHub</a>
         </p>
     </footer>
 
+    <script>
+        const toggle = document.getElementById("themeToggle")
+        const body = document.body
+        const saved = localStorage.getItem("theme")
+
+        if (saved === "dark") {
+            body.classList.add("dark-mode")
+            toggle.textContent = "Light"
+        }
+
+        toggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode")
+            const dark = body.classList.contains("dark-mode")
+            toggle.textContent = dark ? "Light" : "Dark"
+            localStorage.setItem("theme", dark ? "dark" : "light")
+        })
+    </script>
 </body>
 </html>
-
